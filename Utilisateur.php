@@ -91,14 +91,14 @@
             }
         }
 
-        public function inscrire($nomUser,$prenomUser,$telephoneUser,$emailUser,$motDePasseUser){
+        public function inscrire($nomUser,$prenomUser,$telephoneUser,$emailUser,$motDePasseUser,$BD){
             $this->setNom($nomUser);
             $this->setPrenom($prenomUser);
             $this->setTelephone($telephoneUser);
             $this->setEmail($emailUser);
             $this->setMotDePasse($motDePasseUser);
 
-            global $BD;
+           
             echo "Inscription réussi !!";
 
             $insert="INSERT INTO utilisateur(nom_utilisateur,prenom_utilisateur,email_utilisateur,tel_utilisateur,password_utilisateur) 
@@ -106,11 +106,11 @@
             $BD->query($insert);
         }
 
-        public function seConnecter($emailUser,$motDePasseUser){
+        public function seConnecter($emailUser,$motDePasseUser,$BD){
             session_start();
             $this->setEmail($emailUser);
             $this->setMotDePasse($motDePasseUser);
-            global $BD;
+            
 
             $connect="SELECT * FROM utilisateur WHERE email_utilisateur='$this->email'AND password_utilisateur='$this->motDePasse'";
             $save=$BD->query($connect)->fetch();

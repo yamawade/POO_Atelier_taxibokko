@@ -12,11 +12,12 @@
     // }
 
    
-    class ConnectDatabase{
+     class ConnectDatabase{
         public function Database(){
             try
             {
                 $BD = new PDO('mysql:host=localhost;dbname=taxibokkoPoo;charset=utf8', 'root', '');
+                return $BD;
             }
             catch (Exception $e)
             {
@@ -24,7 +25,8 @@
             }
         }
     }
-
+   $con= new ConnectDatabase();
+   $BD= $con->Database();
 ?>
 
 

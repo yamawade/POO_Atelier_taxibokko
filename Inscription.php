@@ -16,12 +16,19 @@
             $telephone = $_POST['telephone'];
             $email = $_POST['email'];
             $motDePasse = $_POST['motDePasse'];
-
+            $verif="SELECT * FROM utilisateur WHERE email_utilisateur='$email'";
+            $ver=$BD->query($verif)->fetch();
+            $verifNum="SELECT * FROM utilisateur WHERE tel_utilisateur='$telephone'";
+            $verNum=$BD->query($verifNum)->fetch();
             if(empty($prenom)|| empty($nom) || empty($telephone) || empty($motDePasse) || empty($email)){
                 echo "Veuillez renseigner tous les champs";
+            }elseif ($ver) {
+                echo "Ce mail existe deja choisissez un autre";
+            }elseif($verNum){
+                echo "Ce numero de telephone existe deja";
             }else{
                 $user1= new Utilisateur ($nom,$prenom,$telephone,$email,$motDePasse);
-                $user1->inscrire($nom,$prenom,$telephone,$email,$motDePasse);
+                $user1->inscrire($nom,$prenom,$telephone,$email,$motDePasse,$BD);
             }
         }
     

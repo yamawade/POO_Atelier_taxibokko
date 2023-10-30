@@ -17,7 +17,7 @@
                 echo "Tous les champs sont obligatoires";
             }else{
                 $user1= new Utilisateur ($email,$motDePasse);
-                $user1->seConnecter($email,$motDePasse);
+                $user1->seConnecter($email,$motDePasse,$BD);
             }
         }
     ?>
