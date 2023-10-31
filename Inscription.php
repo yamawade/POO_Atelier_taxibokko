@@ -27,7 +27,7 @@
             }elseif($verNum){
                 echo "Ce numero de telephone existe deja";
             }else{
-                $user1= new Utilisateur ($nom,$prenom,$telephone,$email,$motDePasse);
+                $user1= new Utilisateur ();
                 $user1->inscrire($nom,$prenom,$telephone,$email,$motDePasse,$BD);
             }
         }
@@ -78,6 +78,8 @@
         <br>
         <br>
         <button type="submit" name="inscrire" class="inscrire">S'inscrire ➡</button>
+        <br>
+        <a href="Connexion.php">Se Connecter</a>
     </form>
 </body>
 </html>

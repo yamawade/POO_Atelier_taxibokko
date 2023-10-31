@@ -16,7 +16,7 @@
             if(empty($_POST['email']) || empty($_POST['motDePasse'])){
                 echo "Tous les champs sont obligatoires";
             }else{
-                $user1= new Utilisateur ($email,$motDePasse);
+                $user1= new Utilisateur ();
                 $user1->seConnecter($email,$motDePasse,$BD);
             }
         }
